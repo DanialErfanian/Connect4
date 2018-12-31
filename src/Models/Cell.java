@@ -3,11 +3,11 @@ package Models;
 public class Cell {
     private Player player;
 
-    Cell(Player player) {
+    public Cell(Player player) {
         this.player = player;
     }
 
-    Player getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 }

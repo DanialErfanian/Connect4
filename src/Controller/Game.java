@@ -1,14 +1,8 @@
-package Models;
+package Controller;
 
-import com.gilecode.yagson.YaGson;
-import com.gilecode.yagson.YaGsonBuilder;
+import Models.Cell;
+import Models.Player;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Timer;
@@ -25,13 +19,28 @@ public class Game {
     private Timer timer;
     private TimerTask timerTask;
 
-    public Game(Player player1, Player player2) {
+    Game(Player player1, Player player2) {
         players[0] = player1;
         players[1] = player2;
         new Thread(this::resetTimer).start();
     }
 
+    int getMapHeight() {
+        return mapHeight;
+    }
+
+    int getMapWidth() {
+        return mapWidth;
+    }
+
+    private boolean columnIsValid(int column) {
+        return column >= 0 && column < mapWidth;
+    }
+
+
     private void resetTimer() {
+        if (done)
+            return;
         if (relax(false)) {
             try {
                 Thread.sleep(200);
@@ -53,19 +62,12 @@ public class Game {
         timer.schedule(timerTask, 10 * 1000);
     }
 
-    private boolean columnIsValid(int column) {
-        return column >= 0 && column < mapWidth;
-    }
-
     private Player getPlayer() {
-        if (done)
-            return null;
-        if (turn)
-            return players[1];
-        return players[0];
+        if (done) return null;
+        return turn ? players[1] : players[0];
     }
 
-    public boolean addCell(int column) {
+    boolean addCell(int column) {
         return addCell(new Cell(getPlayer()), column);
     }
 
@@ -79,7 +81,7 @@ public class Game {
         return true;
     }
 
-    public boolean relax() {
+    boolean relax() {
         return relax(true);
     }
 
@@ -97,7 +99,7 @@ public class Game {
         else addCell(i);
     }
 
-    public boolean relax(boolean commit) {
+    private boolean relax(boolean commit) {
         boolean relaxed = false;
         for (int column = 0; column < mapWidth; column++) {
             for (int row = mapHeight - 2; row >= 0; row--) {
@@ -140,7 +142,7 @@ public class Game {
         return String.format("Game: \n%s", array);
     }
 
-    public Player getWinner() {
+    Player getWinner() {
         if (relax(false))
             return null;
         for (int column = 0; column < mapWidth; column++)
@@ -171,7 +173,7 @@ public class Game {
         return null;
     }
 
-    public Player getCellPlayer(int row, int col) {
+    Player getCellPlayer(int row, int col) {
         try {
             return cells[row][col].getPlayer();
         } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
@@ -179,40 +181,7 @@ public class Game {
         }
     }
 
-
-    public static Game loadFromFile(String path) {
-        try {
-            String text = new String(Files.readAllBytes(Paths.get(path)));
-            YaGson mapper = new YaGsonBuilder().setPrettyPrinting().create();
-            return mapper.fromJson(text, Game.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public boolean saveToFile(String path) {
-        YaGson mapper = new YaGsonBuilder().setPrettyPrinting().create();
-        File file = new File(path);
-        try {
-            PrintStream result = new PrintStream(file);
-            result.println(mapper.toJson(this, Game.class));
-            return true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public int getMapHeight() {
-        return mapHeight;
-    }
-
-    public int getMapWidth() {
-        return mapWidth;
-    }
-
-    public String getCurrentTurnName() {
+    String getCurrentTurnName() {
         if (done)
             return "Game is done";
         if (turn)
@@ -221,7 +190,11 @@ public class Game {
             return players[0].getName();
     }
 
-    public TimerTask getTimerTask() {
+    TimerTask getTimerTask() {
         return timerTask;
+    }
+
+    boolean isDone() {
+        return done;
     }
 }

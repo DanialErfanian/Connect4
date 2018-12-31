@@ -1,6 +1,5 @@
-package sample;
+package Controller;
 
-import Models.Game;
 import Models.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +17,7 @@ public class GameStarter {
                 secondPlayerName.getText()));
 
         Scene scene = firstPlayerName.getScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameUI.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/GameUI.fxml"));
         System.out.println("GameUI loaded successfully.");
         Parent root = fxmlLoader.load();
         scene.getStylesheets().clear();

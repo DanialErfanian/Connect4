@@ -1,6 +1,5 @@
-package sample;
+package Controller;
 
-import Models.Game;
 import Models.Player;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -21,13 +20,16 @@ public class GameController {
         this.game = game;
 
         new Thread(() -> {
-            for (int i = 1; i <= 100000; i++) {
+            final int counter = 100000;
+            for (int i = 1; i <= counter; i++) {
                 Platform.runLater(this::update);
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                if (game.isDone())
+                    i = counter - 10;
             }
         }).start();
 
@@ -42,8 +44,15 @@ public class GameController {
         }
     }
 
+    private void update() {
+        //System.out.println("update UI graphic...");
+        updateGame();
+        updateTimer();
+        updateLabel();
+    }
+
     private void updateGame() {
-        System.out.println("Updating game...");
+        //System.out.println("Updating game...");
         ObservableList<Node> nodes = table.getChildren();
         for (int row = 0; row < game.getMapHeight(); row++) {
             HBox hBox = (HBox) nodes.get(row);
@@ -58,15 +67,8 @@ public class GameController {
         }
     }
 
-    private void update() {
-        updateGame();
-        updateTimer();
-        updateLabel();
-    }
-
     private void updateLabel() {
         boolean relaxed = game.relax();
-        System.out.println(game);
         Player winner = game.getWinner();
         if (winner != null)
             label.setText(String.format("winner is %s", winner.getName()));
@@ -77,7 +79,7 @@ public class GameController {
     }
 
     private void updateTimer() {
-        System.out.println("Updating timer...");
+        //System.out.println("Updating timer...");
         long now = System.currentTimeMillis();
         long finish = 0;
         if (game.getTimerTask() != null)
