@@ -56,6 +56,15 @@ public class GameController {
                     circle.setFill(player.getColor());
             }
         }
+    }
+
+    private void update() {
+        updateGame();
+        updateTimer();
+        updateLabel();
+    }
+
+    private void updateLabel() {
         boolean relaxed = game.relax();
         System.out.println(game);
         Player winner = game.getWinner();
@@ -65,11 +74,6 @@ public class GameController {
             label.setText(String.format("%s's turn.", game.getCurrentTurnName()));
         else
             label.setText("Waiting...");
-    }
-
-    private void update() {
-        updateGame();
-        updateTimer();
     }
 
     private void updateTimer() {

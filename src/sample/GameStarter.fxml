@@ -1,80 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="1015.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameStarter">
-   <center>
-      <VBox prefHeight="449.0" prefWidth="748.0" BorderPane.alignment="CENTER">
-         <children>
+<?import javafx.scene.text.*?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0"
+            prefWidth="1015.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.GameStarter">
+    <center>
+        <VBox prefHeight="449.0" prefWidth="748.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
             <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Player1:">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="17.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="firstPlayerName" minHeight="50.0" minWidth="200.0" onAction="#startGame" prefWidth="100.0" promptText="Enter your name">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="43.0" top="24.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
+                <Label text="Player1:">
+                    <font>
+                        <Font size="48.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets top="17.0"/>
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="firstPlayerName" minHeight="50.0" minWidth="200.0" onAction="#startGame"
+                           prefWidth="100.0" promptText="Enter your name">
+                    <font>
+                        <Font size="19.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="43.0" top="24.0"/>
+                    </HBox.margin>
+                </TextField>
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Player2:">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="17.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="secondPlayerName" minHeight="50.0" minWidth="200.0" prefWidth="100.0" promptText="Enter your name">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="43.0" top="24.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
+                <Label text="Player2:">
+                    <font>
+                        <Font size="48.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets top="17.0"/>
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="secondPlayerName" minHeight="50.0" minWidth="200.0" prefWidth="100.0"
+                           promptText="Enter your name">
+                    <font>
+                        <Font size="19.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="43.0" top="24.0"/>
+                    </HBox.margin>
+                </TextField>
             </HBox>
             <Button fx:id="startGame" mnemonicParsing="false" onAction="#startGame" text="Start">
-               <font>
-                  <Font size="30.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="170.0" top="40.0" />
-               </VBox.margin>
+                <font>
+                    <Font size="30.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets left="170.0" top="40.0"/>
+                </VBox.margin>
             </Button>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </VBox>
-   </center>
-   <left>
-      <HBox prefHeight="548.0" prefWidth="267.0" BorderPane.alignment="CENTER" />
-   </left>
-   <top>
-      <HBox prefHeight="119.0" prefWidth="1015.0" BorderPane.alignment="CENTER" />
-   </top>
+        </VBox>
+    </center>
+    <left>
+        <HBox prefHeight="548.0" prefWidth="267.0" BorderPane.alignment="CENTER"/>
+    </left>
+    <top>
+        <HBox prefHeight="119.0" prefWidth="1015.0" BorderPane.alignment="CENTER"/>
+    </top>
 </BorderPane>
