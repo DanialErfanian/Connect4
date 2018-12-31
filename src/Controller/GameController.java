@@ -18,7 +18,11 @@ public class GameController {
 
     void initialize(Game game) {
         this.game = game;
+        startGameUpdater();
+        setCircleOnAction();
+    }
 
+    private void startGameUpdater() {
         new Thread(() -> {
             final int counter = 100000;
             for (int i = 1; i <= counter; i++) {
@@ -32,7 +36,9 @@ public class GameController {
                     i = counter - 10;
             }
         }).start();
+    }
 
+    private void setCircleOnAction() {
         ObservableList<Node> nodes = table.getChildren();
         for (int row = 0; row < game.getMapHeight(); row++) {
             HBox hBox = (HBox) nodes.get(row);
@@ -87,6 +93,9 @@ public class GameController {
         long remain = finish - now;
         if (remain < 0)
             remain = 0;
-        timer.setText(remain / 1000. + "s");
+        if (game.isDone())
+            timer.setText("GL & HF");
+        else
+            timer.setText(remain / 1000. + "s");
     }
 }

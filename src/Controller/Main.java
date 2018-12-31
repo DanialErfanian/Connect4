@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../Views/GameStarter.fxml"));
         primaryStage.setTitle("Connect4");
-        primaryStage.setScene(new Scene(root, 1008, 830));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
