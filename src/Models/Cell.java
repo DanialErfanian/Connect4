@@ -1,6 +1,6 @@
 package Models;
 
-class Cell {
+public class Cell {
     private Player player;
 
     Cell(Player player) {

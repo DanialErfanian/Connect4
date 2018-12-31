@@ -21,14 +21,18 @@ public class GameStarter {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameUI.fxml"));
         System.out.println("GameUI loaded successfully.");
         Parent root = fxmlLoader.load();
-        GameController controller = fxmlLoader.getController();
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///home/danial/Desktop/Uni/AP/Connect4/css/style.css");
         scene.setRoot(root);
         System.out.println("Root changed successfully.");
+        System.out.println("Loaded styles:");
+        System.out.println(scene.getStylesheets());
         System.out.println("Game starting...");
         Player player1 = new Player(firstPlayerName.getText(), Color.RED);
-        Player player2 = new Player(secondPlayerName.getText(), Color.BLUE);
+        Player player2 = new Player(secondPlayerName.getText(), Color.YELLOW);
         Game game = new Game(player1, player2);
-        controller.setGame(game);
+        GameController controller = fxmlLoader.getController();
+        controller.initialize(game);
         System.out.println("Game started.");
     }
 

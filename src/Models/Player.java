@@ -16,4 +16,12 @@ public class Player {
     public String toString() {
         return String.format("Player %s with color %s", name, color);
     }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

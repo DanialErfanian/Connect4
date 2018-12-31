@@ -1,0 +1,12 @@
+.VBox {
+    -fx-background-color: #0469f6;
+    -fx-border-color: black;
+    -fx-spacing: 10;
+    -fx-max-height: 670;
+    -fx-max-width: 780;
+}
+
+.HBox {
+    -fx-spacing: 10;
+    -fx-padding: 0 0 0 10;
+}
