@@ -14,15 +14,16 @@ public class Game {
     private final int mapHeight = 6;
     private final int mapWidth = 7;
     private boolean turn = false;
-    private Cell[][] cells = new Cell[mapHeight][mapWidth];
     private boolean done = false;
+    private boolean stable = true;
+    private Cell[][] cells = new Cell[mapHeight][mapWidth];
     private Timer timer;
     private TimerTask timerTask;
 
     Game(Player player1, Player player2) {
         players[0] = player1;
         players[1] = player2;
-        new Thread(this::resetTimer).start();
+        resetTimer();
     }
 
     int getMapHeight() {
@@ -39,17 +40,6 @@ public class Game {
 
 
     private void resetTimer() {
-        if (done)
-            return;
-        if (relax(false)) {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            resetTimer();
-            return;
-        }
         if (timer != null)
             timer.cancel();
         timer = new Timer();
@@ -63,7 +53,6 @@ public class Game {
     }
 
     private Player getPlayer() {
-        if (done) return null;
         return turn ? players[1] : players[0];
     }
 
@@ -72,17 +61,11 @@ public class Game {
     }
 
     private boolean addCell(Cell cell, int column) {
-        if (done) return false;
-        if (relax(false)) return false;
-        if (!columnIsValid(column) || cells[0][column] != null)
+        if (done || !stable || !columnIsValid(column) || cells[0][column] != null)
             return false;
         this.cells[0][column] = cell;
         changeTurn();
         return true;
-    }
-
-    boolean relax() {
-        return relax(true);
     }
 
     private void addRandomCell() {
@@ -90,6 +73,9 @@ public class Game {
             timer.cancel();
         if (done)
             return;
+        // stable getDone
+        // 10 s tool mikeshe ta game done beshe
+
         int num = new Random().nextInt(mapWidth);
         int i;
         for (i = 0; num > 0 && i < mapWidth * mapWidth; i++)
@@ -99,15 +85,13 @@ public class Game {
         else addCell(i);
     }
 
-    private boolean relax(boolean commit) {
+    private boolean relax() {
         boolean relaxed = false;
         for (int column = 0; column < mapWidth; column++) {
             for (int row = mapHeight - 2; row >= 0; row--) {
                 if (cells[row][column] != null && cells[row + 1][column] == null) {
-                    if (commit) {
-                        cells[row + 1][column] = cells[row][column];
-                        cells[row][column] = null;
-                    }
+                    cells[row + 1][column] = cells[row][column];
+                    cells[row][column] = null;
                     relaxed = true;
                 }
             }
@@ -120,7 +104,6 @@ public class Game {
         if (done)
             return;
         turn ^= true;
-        new Thread(this::resetTimer).start();
     }
 
     @Override
@@ -143,33 +126,20 @@ public class Game {
     }
 
     Player getWinner() {
-        if (relax(false))
-            return null;
+        int[][] dx = new int[][]{{1, 2, 3}, {0, 0, 0}, {1, 2, 3}, {-1, -2, -3}};
+        int[][] dy = new int[][]{{0, 0, 0}, {1, 2, 3}, {1, 2, 3}, {+1, +2, +3}};
         for (int column = 0; column < mapWidth; column++)
             for (int row = 0; row < mapHeight; row++)
-                if (getCellPlayer(row, column) != null) {
-                    boolean flag = false;
-                    if (getCellPlayer(row + 1, column) == getCellPlayer(row, column))
-                        if (getCellPlayer(row + 2, column) == getCellPlayer(row, column))
-                            if (getCellPlayer(row + 3, column) == getCellPlayer(row, column))
-                                flag = true;
-                    if (getCellPlayer(row, column + 1) == getCellPlayer(row, column))
-                        if (getCellPlayer(row, column + 2) == getCellPlayer(row, column))
-                            if (getCellPlayer(row, column + 3) == getCellPlayer(row, column))
-                                flag = true;
-                    if (getCellPlayer(row + 1, column + 1) == getCellPlayer(row, column))
-                        if (getCellPlayer(row + 2, column + 2) == getCellPlayer(row, column))
-                            if (getCellPlayer(row + 3, column + 3) == getCellPlayer(row, column))
-                                flag = true;
-                    if (getCellPlayer(row - 1, column + 1) == getCellPlayer(row, column))
-                        if (getCellPlayer(row - 2, column + 2) == getCellPlayer(row, column))
-                            if (getCellPlayer(row - 3, column + 3) == getCellPlayer(row, column))
-                                flag = true;
-                    if (flag) {
-                        done = true;
-                        return getCellPlayer(row, column);
+                if (getCellPlayer(row, column) != null)
+                    for (int l = 0; l < 4; l++) {
+                        boolean flag = true;
+                        for (int i = 0; flag && i < 3; i++)
+                            flag = getCellPlayer(row + dx[l][i], column + dy[l][i]) == getCellPlayer(row, column);
+                        if (flag) {
+                            done = true;
+                            return getCellPlayer(row, column);
+                        }
                     }
-                }
         return null;
     }
 
@@ -182,8 +152,6 @@ public class Game {
     }
 
     String getCurrentTurnName() {
-        if (done)
-            return "Game is done";
         if (turn)
             return players[1].getName();
         else
@@ -196,5 +164,16 @@ public class Game {
 
     boolean isDone() {
         return done;
+    }
+
+    boolean clock() {
+        done = !relax();
+        if (!stable && done)
+            resetTimer();
+        stable = done;
+        for (int col = 0; col < mapWidth; col++)
+            if (cells[0][col] == null)
+                done = false;
+        return stable;
     }
 }

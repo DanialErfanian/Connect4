@@ -74,11 +74,13 @@ public class GameController {
     }
 
     private void updateLabel() {
-        boolean relaxed = game.relax();
+        boolean stable = game.clock();
         Player winner = game.getWinner();
         if (winner != null)
             label.setText(String.format("winner is %s", winner.getName()));
-        else if (!relaxed)
+        else if(game.isDone())
+            label.setText("Tie.");
+        else if (stable)
             label.setText(String.format("%s's turn.", game.getCurrentTurnName()));
         else
             label.setText("Waiting...");

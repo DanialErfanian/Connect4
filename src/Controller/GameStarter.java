@@ -32,7 +32,7 @@ public class GameStarter {
         System.out.println("Game started.");
         stage.setScene(scene);
         stage.setOnCloseRequest(windowEvent -> {
-            System.out.println("here");
+            System.out.println("Closing application...");
             stage.close();
             Platform.exit();
             System.exit(0);
