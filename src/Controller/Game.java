@@ -69,13 +69,8 @@ public class Game {
     }
 
     private void addRandomCell() {
-        if (timer != null)
-            timer.cancel();
         if (done)
             return;
-        // stable getDone
-        // 10 s tool mikeshe ta game done beshe
-
         int num = new Random().nextInt(mapWidth);
         int i;
         for (i = 0; num > 0 && i < mapWidth * mapWidth; i++)
@@ -137,13 +132,24 @@ public class Game {
                             flag = getCellPlayer(row + dx[l][i], column + dy[l][i]) == getCellPlayer(row, column);
                         if (flag) {
                             done = true;
+                            for (int i = 0; i < 3; i++)
+                                getCell(row + dx[l][i], column + dy[l][i]).setAsWiningState();
+                            getCell(row, column).setAsWiningState();
                             return getCellPlayer(row, column);
                         }
                     }
         return null;
     }
 
-    Player getCellPlayer(int row, int col) {
+    Cell getCell(int row, int col) {
+        try {
+            return cells[row][col];
+        } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
+            return null;
+        }
+    }
+
+    private Player getCellPlayer(int row, int col) {
         try {
             return cells[row][col].getPlayer();
         } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {

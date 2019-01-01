@@ -1,5 +1,6 @@
 package Controller;
 
+import Models.Cell;
 import Models.Player;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -14,7 +15,9 @@ public class GameController {
     public Label label;
     public Label timer;
     public VBox table;
+
     private Game game;
+    private int currentFrame = 0;
 
     void initialize(Game game) {
         this.game = game;
@@ -32,8 +35,6 @@ public class GameController {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if (game.isDone())
-                    i = counter - 10;
             }
         }).start();
     }
@@ -55,6 +56,7 @@ public class GameController {
         updateGame();
         updateTimer();
         updateLabel();
+        currentFrame++;
     }
 
     private void updateGame() {
@@ -64,11 +66,11 @@ public class GameController {
             HBox hBox = (HBox) nodes.get(row);
             for (int column = 0; column < game.getMapWidth(); column++) {
                 Circle circle = (Circle) hBox.getChildren().get(column);
-                Player player = game.getCellPlayer(row, column);
-                if (player == null)
+                Cell cell = game.getCell(row, column);
+                if (cell == null || cell.isWiningState() && currentFrame % 6 < 3)
                     circle.setFill(Color.WHITE);
                 else
-                    circle.setFill(player.getColor());
+                    circle.setFill(cell.getColor());
             }
         }
     }
@@ -78,7 +80,7 @@ public class GameController {
         Player winner = game.getWinner();
         if (winner != null)
             label.setText(String.format("winner is %s", winner.getName()));
-        else if(game.isDone())
+        else if (game.isDone())
             label.setText("Tie.");
         else if (stable)
             label.setText(String.format("%s's turn.", game.getCurrentTurnName()));
