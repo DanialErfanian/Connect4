@@ -37,4 +37,9 @@ public class GameStarter {
         System.out.println("Game started.");
         stage.setScene(scene);
     }
+
+    @FXML
+    public void backToMainPage() throws IOException {
+        MainPageController.show((Stage) rootPane.getScene().getWindow());
+    }
 }
