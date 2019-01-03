@@ -24,15 +24,28 @@ public class Player {
     }
 
     private String name;
-    private int wins, draws, loses;
+    private int wins = 0, draws = 0, losses = 0;
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
 
     public static void updateStatistics(Player player1, Player player2, Player winner) {
+        System.out.println("updating statistics");
         if (winner == player1) {
             player1.wins++;
-            player2.loses++;
+            player2.losses++;
         } else if (winner == player2) {
             player2.wins++;
-            player1.loses++;
+            player1.losses++;
         } else {
             player1.draws++;
             player2.draws++;
