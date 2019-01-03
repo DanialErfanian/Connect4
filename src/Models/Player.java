@@ -26,25 +26,13 @@ public class Player {
     private String name;
     private int wins, draws, loses;
 
-    public int getWins() {
-        return wins;
-    }
-
-    public int getDraws() {
-        return draws;
-    }
-
-    public int getLosses() {
-        return loses;
-    }
-
     public static void updateStatistics(Player player1, Player player2, Player winner) {
         if (winner == player1) {
             player1.wins++;
-            player2.loses--;
+            player2.loses++;
         } else if (winner == player2) {
             player2.wins++;
-            player1.loses--;
+            player1.loses++;
         } else {
             player1.draws++;
             player2.draws++;
