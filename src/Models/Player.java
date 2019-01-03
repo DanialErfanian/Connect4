@@ -1,24 +1,26 @@
 package Models;
 
-import javafx.scene.paint.Color;
+import java.util.ArrayList;
 
 public class Player {
+    private static ArrayList<Player> players = new ArrayList<>();
     private String name;
-    private Color color;
 
+    public static Player getOrCreate(String name) {
+        for (Player player : players)
+            if (player.name.equals(name))
+                return player;
+        return new Player(name);
+    }
 
-    public Player(String name, Color color) {
+    private Player(String name) {
         this.name = name;
-        this.color = color;
+        players.add(this);
     }
 
     @Override
     public String toString() {
-        return String.format("Player %s with color %s", name, color);
-    }
-
-    public Color getColor() {
-        return color;
+        return String.format("Player<%s>", name);
     }
 
     public String getName() {

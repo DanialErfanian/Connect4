@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GameStarter {
@@ -24,8 +23,8 @@ public class GameStarter {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/GameUI.fxml"));
         Scene scene = new Scene(loader.load());
         GameController controller = loader.getController();
-        Player player1 = new Player(firstPlayerName.getText(), Color.RED);
-        Player player2 = new Player(secondPlayerName.getText(), Color.YELLOW);
+        Player player1 = Player.getOrCreate(firstPlayerName.getText());
+        Player player2 = Player.getOrCreate(secondPlayerName.getText());
         Game game = new Game(player1, player2);
         controller.initialize(game);
         System.out.println("Game started.");

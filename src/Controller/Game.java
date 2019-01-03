@@ -2,6 +2,7 @@ package Controller;
 
 import Models.Cell;
 import Models.Player;
+import javafx.scene.paint.Color;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -185,5 +186,13 @@ public class Game {
 
     boolean isStable() {
         return stable;
+    }
+
+    Color getColor(int row, int column) {
+        assert (cells[row][column] != null);
+        if (cells[row][column].getPlayer() == players[0])
+            return Color.RED;
+        else
+            return Color.YELLOW;
     }
 }

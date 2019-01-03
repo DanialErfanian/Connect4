@@ -27,7 +27,7 @@ public class GameController {
 
     private void startGameUpdater() {
         new Thread(() -> {
-            final int counter = 100000;
+            final int counter = 10000000;
             for (int i = 1; i <= counter; i++) {
                 Platform.runLater(this::update);
                 try {
@@ -70,7 +70,7 @@ public class GameController {
                 if (cell == null || cell.isWiningState() && currentFrame % 6 < 3)
                     circle.setFill(Color.WHITE);
                 else
-                    circle.setFill(cell.getColor());
+                    circle.setFill(game.getColor(row, column));
             }
         }
     }
