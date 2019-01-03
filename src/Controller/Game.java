@@ -9,6 +9,9 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+// TODO: GameStarter UI change initial page size
+// TODO: merge backgrounds
+// TODO: add "back to main page" button
 
 public class Game {
     private final Player[] players = new Player[2];

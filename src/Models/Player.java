@@ -75,7 +75,6 @@ public class Player {
             YaGson mapper = new YaGsonBuilder().setPrettyPrinting().create();
             Player[] players = playersStatistics.toArray(new Player[0]);
             String json = mapper.toJson(players, players.getClass());
-            System.out.println(json);
             File file = new File(statisticsFilePath);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             fileOutputStream.write(json.getBytes());

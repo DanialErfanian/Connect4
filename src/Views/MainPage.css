@@ -1,0 +1,32 @@
+VBox {
+}
+
+HBox {
+}
+
+BorderPane {
+    -fx-background-image: url("background.png");
+    -fx-background-repeat: no-repeat;
+    -fx-fit-to-height: false;
+    -fx-fit-to-width: false;
+    -fx-background-size: auto;
+    -fx-background-position: top;
+    -fx-background-color: WHITE;
+}
+
+
+
+/*BorderPane {*/
+/*-fx-background-image: url("background.jpeg");*/
+/*-fx-background-repeat: no-repeat;*/
+/*-fx-fit-to-height: false;*/
+/*-fx-fit-to-width: false;*/
+/*-fx-background-size: auto;*/
+/*-fx-background-position: center;*/
+/*-fx-background-color: WHITE;*/
+/*}*/
+
+Button {
+    -fx-font-size: 30px;
+    -fx-min-width: 250px;
+}
