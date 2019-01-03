@@ -99,7 +99,7 @@ public class GameController {
             remain = 0;
         if (game.isDone())
             timer.setText("GL & HF");
-        else
+        else if (game.isStable())
             timer.setText(remain / 1000. + "s");
     }
 }

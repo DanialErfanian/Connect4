@@ -182,4 +182,8 @@ public class Game {
                 done = false;
         return stable;
     }
+
+    boolean isStable() {
+        return stable;
+    }
 }
