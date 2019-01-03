@@ -11,6 +11,7 @@ import java.util.TimerTask;
 
 // TODO: GameStarter UI change initial page size
 // TODO: merge backgrounds
+// TODO: fix GameUI main table size change with window changes
 
 public class Game {
     private final Player[] players = new Player[2];
