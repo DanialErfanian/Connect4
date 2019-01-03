@@ -26,7 +26,7 @@ public class Main extends Application {
             Platform.exit();
             System.exit(0);
         });
-        primaryStage.getIcons().add(new Image(new File("src/Views/background.jpg").toURI().toString()));
+        primaryStage.getIcons().add(new Image(new File("src/Views/images/background.jpg").toURI().toString()));
     }
 
 

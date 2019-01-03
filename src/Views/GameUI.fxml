@@ -30,7 +30,7 @@
     <center>
         <VBox fx:id="table" alignment="CENTER" styleClass="VBox" BorderPane.alignment="CENTER">
             <stylesheets>
-                <URL value="@style.css" />
+                <URL value="@css/style.css" />
             </stylesheets>
            <children>
                <HBox prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
