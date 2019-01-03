@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ScoreboardController">
+   <center>
+      <TableView fx:id="scoreboard" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="scoreboardName" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Name" />
+          <TableColumn fx:id="scoreboardWins" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Wins" />
+            <TableColumn fx:id="scoreboardLosses" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Losses" />
+            <TableColumn fx:id="scoreboardDraws" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Draws" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>

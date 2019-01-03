@@ -32,8 +32,11 @@ public class MainPageController {
         stage.setScene(scene);
     }
 
-    public void showStatistics() {
-        // TODO
+    public void showStatistics() throws IOException {
+        Stage stage = (Stage) startGame.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/Statistics.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setScene(scene);
     }
 
 }

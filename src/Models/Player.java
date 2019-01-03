@@ -15,6 +15,10 @@ public class Player {
     private static final String statisticsFilePath = "statistics.json";
     private static ArrayList<Player> playersStatistics = new ArrayList<>();
 
+    public static ArrayList<Player> getPlayersStatistics() {
+        return playersStatistics;
+    }
+
     static {
         loadStatistics();
     }
@@ -30,7 +34,7 @@ public class Player {
         return draws;
     }
 
-    public int getLoses() {
+    public int getLosses() {
         return loses;
     }
 
