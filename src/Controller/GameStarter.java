@@ -23,7 +23,6 @@ public class GameStarter {
         Stage stage = (Stage) rootPane.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/GameUI.fxml"));
         Scene scene = new Scene(loader.load());
-        scene.getStylesheets().add("file:///home/danial/Desktop/Uni/AP/Connect4/css/style.css");
         GameController controller = loader.getController();
         Player player1 = new Player(firstPlayerName.getText(), Color.RED);
         Player player2 = new Player(secondPlayerName.getText(), Color.YELLOW);

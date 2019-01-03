@@ -36,7 +36,7 @@
     <center>
         <VBox fx:id="table" styleClass="VBox">
             <stylesheets>
-                <URL value="@../../css/style.css"/>
+                <URL value="@style.css"/>
             </stylesheets>
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
                 <VBox.margin>
