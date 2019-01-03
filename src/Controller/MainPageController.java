@@ -14,9 +14,8 @@ public class MainPageController {
     public Button statistics;
     public Button startGame;
 
-    public void showMainPage() throws IOException {
-        Stage stage = (Stage) startGame.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/MainPage.fxml"));
+    static void show(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainPageController.class.getResource("../Views/MainPage.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
     }

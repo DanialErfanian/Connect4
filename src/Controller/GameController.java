@@ -10,6 +10,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class GameController {
     public Label label;
@@ -18,6 +21,7 @@ public class GameController {
 
     private Game game;
     private int currentFrame = 0;
+    private boolean isAlive = true;
 
     void initialize(Game game) {
         this.game = game;
@@ -26,9 +30,9 @@ public class GameController {
     }
 
     private void startGameUpdater() {
-        new Thread(() -> {
+        Thread updater = new Thread(() -> {
             final int counter = 10000000;
-            for (int i = 1; i <= counter; i++) {
+            for (int i = 1; this.isAlive && i <= counter; i++) {
                 Platform.runLater(this::update);
                 try {
                     Thread.sleep(100);
@@ -36,7 +40,8 @@ public class GameController {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        updater.start();
     }
 
     private void setCircleOnAction() {
@@ -101,5 +106,15 @@ public class GameController {
             timer.setText("GL & HF");
         else if (game.isStable())
             timer.setText(remain / 1000. + "s");
+    }
+
+    public void backToMainPage() throws IOException {
+        isAlive = false;
+        MainPageController.show((Stage) label.getScene().getWindow());
+    }
+
+    public void backToGameStarter() throws IOException {
+        isAlive = false;
+        GameStarter.show((Stage) label.getScene().getWindow());
     }
 }

@@ -1,7 +1,6 @@
 package Controller;
 
 import Models.Player;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,7 +8,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class GameStarter {
+    static void show(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(GameStarter.class.getResource("../Views/GameStarter.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setScene(scene);
+    }
+
     public TextField secondPlayerName;
     public TextField firstPlayerName;
     public BorderPane rootPane;

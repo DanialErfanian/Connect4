@@ -1,130 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0"
-            prefWidth="1008.0" snapToPixel="false" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1008.0" snapToPixel="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
     <top>
-        <HBox prefHeight="70.0" prefWidth="1008.0" spacing="1.0" BorderPane.alignment="CENTER">
-            <Label fx:id="label" text="Danial">
-                <font>
-                    <Font size="50.0"/>
-                </font>
-                <HBox.margin>
-                    <Insets left="350.0" top="20.0"/>
-                </HBox.margin>
-            </Label>
+        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1008.0" spacing="1.0" BorderPane.alignment="CENTER">
+           <children>
+               <Label fx:id="label" text="Danial">
+                   <font>
+                       <Font size="50.0" />
+                   </font>
+                   <HBox.margin>
+                       <Insets top="20.0" />
+                   </HBox.margin>
+               </Label>
+           </children>
         </HBox>
     </top>
-    <left>
-        <HBox prefHeight="751.0" prefWidth="136.0" BorderPane.alignment="CENTER">
-            <Label fx:id="timer" text="2.00s" textFill="RED">
-                <HBox.margin>
-                    <Insets left="25.0" top="100.0"/>
-                </HBox.margin>
-                <font>
-                    <Font size="26.0"/>
-                </font>
-            </Label>
-        </HBox>
-    </left>
     <center>
-        <VBox fx:id="table" styleClass="VBox">
+        <VBox fx:id="table" alignment="CENTER" styleClass="VBox" BorderPane.alignment="CENTER">
             <stylesheets>
-                <URL value="@style.css"/>
+                <URL value="@style.css" />
             </stylesheets>
-            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
-                <VBox.margin>
-                    <Insets top="10.0"/>
-                </VBox.margin>
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-                <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK"
-                        strokeType="INSIDE"/>
-            </HBox>
+           <children>
+               <HBox prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
+                   <VBox.margin>
+                       <Insets top="10.0" />
+                   </VBox.margin>
+                  <children>
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
+                  <children>
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
+                  <children>
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
+                  <children>
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
+                  <children>
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" styleClass="HBox">
+                  <children>
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="310.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="510.0" layoutY="110.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="360.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                      <Circle fill="WHITE" layoutX="460.0" layoutY="60.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                  </children>
+               </HBox>
+           </children>
         </VBox>
     </center>
+   <left>
+      <VBox alignment="CENTER" prefHeight="751.0" prefWidth="184.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="373.0" prefWidth="169.0">
+               <children>
+                     <Label fx:id="timer" text="2.00s" textFill="RED">
+                         <HBox.margin>
+                             <Insets left="25.0" top="100.0" />
+                         </HBox.margin>
+                         <font>
+                             <Font size="26.0" />
+                         </font>
+                     </Label>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#backToGameStarter" prefHeight="50.0" prefWidth="140.0" text="New Game">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#backToMainPage" prefHeight="50.0" prefWidth="140.0" text="Home Page">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
 </BorderPane>
