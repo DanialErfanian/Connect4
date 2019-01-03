@@ -174,13 +174,23 @@ public class Game {
     }
 
     boolean clock() {
-        done = !relax();
-        if (!stable && done)
+        boolean now = !relax();
+        if (!stable && now)
             resetTimer();
-        stable = done;
+        stable = now;
+        if (!done) {
+            Player winner = getWinner();
+            if (winner != null) {
+                Player.updateStatistics(players[0], players[1], winner);
+                done = true;
+            }
+        }
+        boolean lastDone = done;
+        done = stable;
         for (int col = 0; col < mapWidth; col++)
             if (cells[0][col] == null)
                 done = false;
+        if (!lastDone && done) Player.updateStatistics(players[0], players[1], null);
         return stable;
     }
 
