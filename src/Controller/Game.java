@@ -125,6 +125,8 @@ public class Game {
     }
 
     Player getWinner() {
+        if (!stable)
+            return null;
         int[][] dx = new int[][]{{1, 2, 3}, {0, 0, 0}, {1, 2, 3}, {-1, -2, -3}};
         int[][] dy = new int[][]{{0, 0, 0}, {1, 2, 3}, {1, 2, 3}, {+1, +2, +3}};
         for (int column = 0; column < mapWidth; column++)

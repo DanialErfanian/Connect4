@@ -5,7 +5,7 @@ HBox {
 }
 
 BorderPane {
-    -fx-background-image: url("../images/background.png");
+    -fx-background-image: url("images/background.png");
     -fx-background-repeat: no-repeat;
     -fx-fit-to-height: false;
     -fx-fit-to-width: false;
